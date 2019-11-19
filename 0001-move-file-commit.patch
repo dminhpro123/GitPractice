@@ -1,0 +1,41 @@
+From c4c5b3669d2bfb82218dd07a63c2ba2fb18384eb Mon Sep 17 00:00:00 2001
+From: dminhpro123 <nguyenvducminh@gmail.com>
+Date: Tue, 19 Nov 2019 11:57:10 +0700
+Subject: [PATCH] move file commit
+
+---
+ sources/{source => }/Main.cpp  | 0
+ sources/{source => }/Rock.cpp  | 0
+ sources/{source => }/Rock.h    | 0
+ sources/{source => }/Utils.cpp | 0
+ sources/{source => }/Utils.h   | 0
+ 5 files changed, 0 insertions(+), 0 deletions(-)
+ rename sources/{source => }/Main.cpp (100%)
+ rename sources/{source => }/Rock.cpp (100%)
+ rename sources/{source => }/Rock.h (100%)
+ rename sources/{source => }/Utils.cpp (100%)
+ rename sources/{source => }/Utils.h (100%)
+
+diff --git a/sources/source/Main.cpp b/sources/Main.cpp
+similarity index 100%
+rename from sources/source/Main.cpp
+rename to sources/Main.cpp
+diff --git a/sources/source/Rock.cpp b/sources/Rock.cpp
+similarity index 100%
+rename from sources/source/Rock.cpp
+rename to sources/Rock.cpp
+diff --git a/sources/source/Rock.h b/sources/Rock.h
+similarity index 100%
+rename from sources/source/Rock.h
+rename to sources/Rock.h
+diff --git a/sources/source/Utils.cpp b/sources/Utils.cpp
+similarity index 100%
+rename from sources/source/Utils.cpp
+rename to sources/Utils.cpp
+diff --git a/sources/source/Utils.h b/sources/Utils.h
+similarity index 100%
+rename from sources/source/Utils.h
+rename to sources/Utils.h
+-- 
+2.18.0.windows.1
+
