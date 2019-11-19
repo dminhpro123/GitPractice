@@ -49,3 +49,4 @@ if "%BUILD_FAILED%" == "1" (
 	start "" "%ANDROID_FRAMEWORK_TOOLS_PATH%notifu\notifu.exe" /m "Build Android done." /t info /p "%PROJECT_NAME%" /q /d 5
 	pause
 )
+abc
