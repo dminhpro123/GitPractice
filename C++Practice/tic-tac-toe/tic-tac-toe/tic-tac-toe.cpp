@@ -1,43 +1,47 @@
-// tic-tac-toe.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 #include <string>
-
+#include <sstream>
 using namespace std;
 
-void chessDrawStart(string board[3][3]) {
-	for (int i = 0; i <= 2; i++){
-		for(int j = 0; j <= 2; j++){
-			board[i][j] = "a";
+const int maxBoardX = 3;
+const int maxBoardY = 3;
+
+//draw chess when start
+void drawChessStart(string board[maxBoardX][maxBoardY]) {
+	for (int i = 0; i < maxBoardX; i++){
+		for(int j = 0; j < maxBoardY; j++){
+			board[i][j] = i+'0';
+			board[i][j] += j+'0';
 			cout << board[i][j] +"\t";
 		}
 		cout << "\n";
 	}
 }
 
-void chessDraw(string board[3][3]){
-	for (int i = 0; i <= 2; i++){
-		for(int j = 0; j <= 2; j++){
+//draw chess when play
+void drawChessPlay(string board[maxBoardX][maxBoardY]){
+	for (int i = 0; i < maxBoardX; i++){
+		for(int j = 0; j < maxBoardY; j++){
 			cout << board[i][j] +"\t";
 		}
 		cout << "\n";
 	}
 	
 }
-	 
-void playerTurn(string board[3][3], int x, int y, bool playerTurn){
+
+//update player turn	 
+void playerTurn(string board[maxBoardX][maxBoardY], int x, int y, bool playerTurn){
 	if(playerTurn){
-		for (int i = 0; i <= 2; i++){
-			for(int j = 0; j <= 2; j++){
+		for (int i = 0; i < maxBoardX; i++){
+			for(int j = 0; j < maxBoardY; j++){
 				if(x == i && y == j){
 					board[i][j] = "X";
 				}
 			}
 		}
 	}else{
-		for (int i = 0; i <= 2; i++){
-			for(int j = 0; j <= 2; j++){
+		for (int i = 0; i < maxBoardX; i++){
+			for(int j = 0; j < maxBoardY; j++){
 				if(x == i && y == j){
 					board[i][j] = "O";
 				}
@@ -47,10 +51,71 @@ void playerTurn(string board[3][3], int x, int y, bool playerTurn){
 	
 }
 
+
+//bool checkWin(string board[3][3]){
+//	for (int i=0; i<=2; i++){
+//    	if(board[i][0].compare(board[i][1]) && board[i][1].compare(board[i][2]))
+//    	{
+//    	    return true;
+//    	}
+//	}
+//	
+//	for(int i=0; i<=2; i++)
+// 	{
+//    	if (board[0][i].compare(board[1][i]) && board[1][i].compare(board[2][i]))
+//    	{
+//    	    return true;
+//    	}
+// 	}
+// 	if(board[0][0].compare(board[1][1]) && board[1][1].compare(board[2][2])){
+//    	return true;
+// 	}
+//
+// 	if(board[0][2].compare(board[1][1]) && board[1][1].compare(board[2][0]))
+// 	{
+// 	   return true;
+// 	}
+//	return false;	
+//}
+
+bool checkWinVertical(String board[maxBoardX][maxBoardY], int x, int y){
+	for(int i = 0; i < maxBoardX; i++){
+		
+	}
+	
+}
+
+void inputDir(int &x, int &y,string board[maxBoardX][maxBoardY]){
+	string inputText;
+	cout << "input your chess: ";
+	cin >> inputText;
+	
+	//convert string to int
+	stringstream degree(inputText);
+	int var = 0;
+	degree >> var;
+	
+	x = var/10;
+	if(x < 0 || x >= maxBoardX){
+		cout << "please input again, your direction must >=0 && <=2";
+		inputDir(x, y, board);
+	}
+	
+	y = var%10;
+	if(y < 0 || y >= maxBoardY){
+		cout << "please input again, your direction must >=0 && <=2";
+		inputDir(x, y, board);
+	}
+//	if(board[x][y].compare("X") || board[x][y].compare("O") ){
+//		cout << "please input again, your direction has been inputed";
+//		inputDir(x, y, board);
+//	}
+}
+
 int main()
 {
-	string chess;
-    string chessBoard[3][3];
+
+    string chessBoard[maxBoardX][maxBoardY];
     string player1Name;
 	string player2Name;
 	bool playerturn = true;
@@ -68,51 +133,63 @@ int main()
 	cin >> player2Name;   	
     	
 
-	chessDrawStart(chessBoard);
+	drawChessStart(chessBoard);
 	
 	while(varCount <9){
 		if(playerturn){
     		cout << player1Name + " turn :\n";
+    		
     		int x;
     		int y;
-    		cout << "input x: ";
-    		cin >> x;
-    		cout << "input y: ";
-    		cin >> y;
+    		
+//    		cout << "input x: ";
+//    		cin >> x;
+//    		cout << "input y: ";
+//    		cin >> y;
+			inputDir(x, y,chessBoard);
+    		
     		playerTurn(chessBoard, x, y, playerturn);
     		cout << "\n";
-    		chessDraw(chessBoard);
-    		!playerturn;
-		}
-		if(!playerturn){
+    		
+    		drawChessPlay(chessBoard);
+//    		if(checkWin(chessBoard)){
+//    			cout<< player1Name + " win";
+//    			break;
+//			}
+    		playerturn = !playerturn;
+		}else if(!playerturn){
 			cout << player2Name + " turn :\n";
+			
     		int x;
     		int y;
-    		cout << "input x: ";
-    		cin >> x;
-    		cout << "input y: ";
-    		cin >> y;
+    		
+//    		cout << "input x: ";
+//    		cin >> x;
+//    		cout << "input y: ";
+//    		cin >> y;
+    		
+    		inputDir(x, y, chessBoard);
+    		
     		playerTurn(chessBoard, x, y, playerturn);
     		cout << "\n";
-    		chessDraw(chessBoard);
-    		!playerturn;
+    		
+    		drawChessPlay(chessBoard);
+//    		if(checkWin(chessBoard)){
+//    			cout<< player2Name + " win";
+//    			break;
+//			}
+    		playerturn = !playerturn;
 		}
-		cout << "\n";
-		cout << "var count: " << varCount;
 		
-	}
-	
-	
-	cout << "a";
+		cout << "\n";
+		cout << "var count: " << varCount << "\n";
+		
+		if(varCount == maxBoardX*maxBoardY-1){
+			cout<< "\t\tdraw!!!";
+		}
+		varCount++;		
+	}		
+	cout << "\n a";
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
