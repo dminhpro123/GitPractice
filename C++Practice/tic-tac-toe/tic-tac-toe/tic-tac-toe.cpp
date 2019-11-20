@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+
 using namespace std;
 
 const int maxBoardX = 3;
@@ -51,39 +52,49 @@ void playerTurn(string board[maxBoardX][maxBoardY], int x, int y, bool playerTur
 	
 }
 
-
-//bool checkWin(string board[3][3]){
-//	for (int i=0; i<=2; i++){
-//    	if(board[i][0].compare(board[i][1]) && board[i][1].compare(board[i][2]))
-//    	{
-//    	    return true;
-//    	}
-//	}
-//	
-//	for(int i=0; i<=2; i++)
-// 	{
-//    	if (board[0][i].compare(board[1][i]) && board[1][i].compare(board[2][i]))
-//    	{
-//    	    return true;
-//    	}
-// 	}
-// 	if(board[0][0].compare(board[1][1]) && board[1][1].compare(board[2][2])){
-//    	return true;
-// 	}
-//
-// 	if(board[0][2].compare(board[1][1]) && board[1][1].compare(board[2][0]))
-// 	{
-// 	   return true;
-// 	}
-//	return false;	
-//}
-
-bool checkWinVertical(String board[maxBoardX][maxBoardY], int x, int y){
-	for(int i = 0; i < maxBoardX; i++){
-		
+//checkwin
+bool checkWin(string board[maxBoardX][maxBoardY], bool playerTurn){
+	string tick;
+	if (playerTurn) {
+		tick = "X";
+	}
+	else {
+		tick = "O";
+	}
+	for (int i=0; i < maxBoardX; i++){
+    	if(board[i][0]==(board[i][1]) && board[i][1]==(board[i][2]))
+    	{
+    	    if(board[i][0].compare(tick)){
+    	    	return true;
+			}
+    	}
 	}
 	
+	for(int i=0; i < maxBoardY; i++)
+ 	{
+    	if (board[0][i]==(board[1][i]) && board[1][i]==(board[2][i]))
+    	{
+    	    if(board[0][i].compare(tick)){
+    	    	return true;
+			}
+    	}
+ 	}
+ 	if(board[0][0]==(board[1][1]) && board[1][1]==(board[2][2])){
+    	if(board[0][0].compare(tick)){
+    		return true;
+		}
+ 	}
+
+ 	if(board[0][2]==(board[1][1]) && board[1][1]==(board[2][0]))
+ 	{
+ 	   if(board[0][2].compare(tick)){
+    		return true;
+		}
+ 	}
+	return false;	
 }
+
+
 
 void inputDir(int &x, int &y,string board[maxBoardX][maxBoardY]){
 	string inputText;
@@ -142,20 +153,17 @@ int main()
     		int x;
     		int y;
     		
-//    		cout << "input x: ";
-//    		cin >> x;
-//    		cout << "input y: ";
-//    		cin >> y;
 			inputDir(x, y,chessBoard);
     		
     		playerTurn(chessBoard, x, y, playerturn);
     		cout << "\n";
     		
     		drawChessPlay(chessBoard);
-//    		if(checkWin(chessBoard)){
-//    			cout<< player1Name + " win";
-//    			break;
-//			}
+			
+			if(checkWin(chessBoard, playerTurn)){
+    			cout<< player1Name + " win";
+    			break;
+			}
     		playerturn = !playerturn;
 		}else if(!playerturn){
 			cout << player2Name + " turn :\n";
@@ -163,21 +171,17 @@ int main()
     		int x;
     		int y;
     		
-//    		cout << "input x: ";
-//    		cin >> x;
-//    		cout << "input y: ";
-//    		cin >> y;
-    		
     		inputDir(x, y, chessBoard);
     		
     		playerTurn(chessBoard, x, y, playerturn);
     		cout << "\n";
     		
     		drawChessPlay(chessBoard);
-//    		if(checkWin(chessBoard)){
-//    			cout<< player2Name + " win";
-//    			break;
-//			}
+    		
+    		if(checkWin(chessBoard, playerTurn)){
+    			cout<< player2Name + " win";
+    			break;
+			}
     		playerturn = !playerturn;
 		}
 		
@@ -191,5 +195,3 @@ int main()
 	}		
 	cout << "\n a";
 }
-
-

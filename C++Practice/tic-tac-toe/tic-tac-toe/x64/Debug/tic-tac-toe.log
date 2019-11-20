@@ -1,0 +1,4 @@
+﻿  tic-tac-toe.cpp
+D:\gitclone\GitPractice\C++Practice\tic-tac-toe\tic-tac-toe\tic-tac-toe.cpp(163,6): warning C4305: 'argument': truncation from 'void (__cdecl *)(std::string [][3],int,int,bool)' to 'bool'
+D:\gitclone\GitPractice\C++Practice\tic-tac-toe\tic-tac-toe\tic-tac-toe.cpp(181,9): warning C4305: 'argument': truncation from 'void (__cdecl *)(std::string [][3],int,int,bool)' to 'bool'
+  tic-tac-toe.vcxproj -> D:\gitclone\GitPractice\C++Practice\tic-tac-toe\x64\Debug\tic-tac-toe.exe
