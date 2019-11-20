@@ -26,45 +26,83 @@ void chessDraw(string board[3][3]){
 	
 }
 	 
-void player1Turn(string board[3][3], int x, int y){
-	for (int i = 0; i <= 2; i++){
-		for(int j = 0; j <= 2; j++){
-			if(x == i && y == j){
-				board[i][j] = "X";
+void playerTurn(string board[3][3], int x, int y, bool playerTurn){
+	if(playerTurn){
+		for (int i = 0; i <= 2; i++){
+			for(int j = 0; j <= 2; j++){
+				if(x == i && y == j){
+					board[i][j] = "X";
+				}
+			}
+		}
+	}else{
+		for (int i = 0; i <= 2; i++){
+			for(int j = 0; j <= 2; j++){
+				if(x == i && y == j){
+					board[i][j] = "O";
+				}
 			}
 		}
 	}
-}
-
-void player2Turn(string board[3][3], int x, int y){
-	for (int i = 0; i <= 2; i++){
-		for(int j = 0; j <= 2; j++){
-			if(x == i && y == j){
-				board[i][j] = "O";
-			}
-		}
-	}
+	
 }
 
 int main()
 {
-    std::cout << "Hello World!\n";
-    string chess;
+	string chess;
     string chessBoard[3][3];
-    chessDrawStart(chessBoard);
-    bool playerturn = true;
-    if(playerturn){
-    	player1Turn(chessBoard, 1, 1);
-    	cout << "\n";
-    	chessDraw(chessBoard);
-    	!playerturn;
-	}else if(!playerturn){
-		player1Turn(chessBoard, 2, 1);
-		cout << "\n";
-		chessDraw(chessBoard);
-    	!playerturn;
-	}
+    string player1Name;
+	string player2Name;
+	bool playerturn = true;
+	int varCount = 0;
+    	
+    cout << "Welcome To Tic-tac-toe game! Play with your way!\nIf you find any problem, please contact john.nguyen@gameloft.com\n";
+    cout << "SELECT YOUR MODE (a - PLAY GAME, OTHERS - EXIT GAME):\n";
+    string inputText;
+    cin >> inputText;
+	
+	cout << "Enter Player 1 Name: ";
+	cin >> player1Name;
 	cout << "\n";
+	cout << "Enter Player 2 Name: ";
+	cin >> player2Name;   	
+    	
+
+	chessDrawStart(chessBoard);
+	
+	while(varCount <9){
+		if(playerturn){
+    		cout << player1Name + " turn :\n";
+    		int x;
+    		int y;
+    		cout << "input x: ";
+    		cin >> x;
+    		cout << "input y: ";
+    		cin >> y;
+    		playerTurn(chessBoard, x, y, playerturn);
+    		cout << "\n";
+    		chessDraw(chessBoard);
+    		!playerturn;
+		}
+		if(!playerturn){
+			cout << player2Name + " turn :\n";
+    		int x;
+    		int y;
+    		cout << "input x: ";
+    		cin >> x;
+    		cout << "input y: ";
+    		cin >> y;
+    		playerTurn(chessBoard, x, y, playerturn);
+    		cout << "\n";
+    		chessDraw(chessBoard);
+    		!playerturn;
+		}
+		cout << "\n";
+		cout << "var count: " << varCount;
+		
+	}
+	
+	
 	cout << "a";
 }
 
