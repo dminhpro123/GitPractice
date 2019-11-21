@@ -1,0 +1,6 @@
+﻿  pointer.cpp
+D:\gitclone\GitPractice\C++Practice\pointer and stl\pointer\pointer\pointer.cpp(15,2): error C2065: 'list': undeclared identifier
+D:\gitclone\GitPractice\C++Practice\pointer and stl\pointer\pointer\pointer.cpp(15,15): error C2275: 'Student': illegal use of this type as an expression
+D:\gitclone\GitPractice\C++Practice\pointer and stl\pointer\pointer\pointer.cpp(7): message : see declaration of 'Student'
+D:\gitclone\GitPractice\C++Practice\pointer and stl\pointer\pointer\pointer.cpp(15,17): error C2065: 'student': undeclared identifier
+D:\gitclone\GitPractice\C++Practice\pointer and stl\pointer\pointer\pointer.cpp(26,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
