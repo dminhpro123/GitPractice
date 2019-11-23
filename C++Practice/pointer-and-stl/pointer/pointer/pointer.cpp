@@ -40,25 +40,21 @@ void display(Student student) {
 	cout << "Score: " << student.score << endl;	
 }
 
-void saveToFile(Student student, list <Student> studentList, list <Student> ::iterator it) {
-	
-	ofstream MyFile("student.txt");
-	for (it = studentList.begin(); it != studentList.end(); it++) {
+void saveToFile(Student student) {	
+	fstream MyFile;
+	MyFile.open("student.txt", ios::out);
+	string inputFile = "_";
+	inputFile.append("");
 		// Write to the file
-		MyFile << "ID: " << student.id << " ";
-		MyFile << "name: " << student.name << " ";
-		MyFile << "score: " << student.score << " ";
-	}
-	// Create and open a text file
-	
-
-	
+	MyFile << student.id << ",";
+	MyFile << student.name << ",";
+	MyFile << student.score << ";";
 
 	// Close the file
 	MyFile.close();
 }
 
-void loadFromFile() {
+void printFromFile() {
 	// Create a text string, which is used to output the text file
 	string myText;
 
@@ -73,6 +69,24 @@ void loadFromFile() {
 
 	// Close the file
 	MyReadFile.close();
+}
+
+Student loadFromFile(Student student) {
+	string myText;
+	ifstream MyReadFile("student.txt");
+
+	while (getline(MyReadFile, myText)) {
+		// Output the text from the file
+		if (myText.empty()) {
+			cout << "notthing in file";
+		}
+		else
+		{
+			
+		}
+	}
+
+	return student;
 }
 
 void main() {
@@ -97,13 +111,15 @@ void main() {
 			}			
 			break;
 		case 3:
-			//for (it = studentList.begin(); it != studentList.end(); it++) {
-			//	saveToFile(*it);
-			//}
-			saveToFile(*student, studentList, it);
+			for (it = studentList.begin(); it != studentList.end(); it++) {
+				saveToFile(*it);
+			}
+			printFromFile();
+			
+			
 			break;
 		case 4:
-			loadFromFile();
+			
 			break;
 		default:
 			break;
