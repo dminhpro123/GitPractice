@@ -23,7 +23,7 @@ void MyPoint::Display()
 
 void MyPoint::SetX(int mPosX)
 {
-	mPosX = this->mPosX;
+	this->mPosX = mPosX;
 }
 
 int MyPoint::GetX()
@@ -33,7 +33,7 @@ int MyPoint::GetX()
 
 void MyPoint::SetY(int mPosY)
 {
-	mPosY = this->mPosX;
+	this->mPosY = mPosX;
 }
 
 int MyPoint::GetY()
