@@ -1,5 +1,5 @@
 #pragma once
-#include "list"
+#include <list>
 using namespace std;
 
 class Virus
@@ -10,7 +10,7 @@ private:
 public:
 	Virus();
 	Virus(char*, int);
-	~Virus();
+	virtual ~Virus();
 	Virus(const Virus &Virus);
 	void SetM_dna(char*);
 	char* GetM_dna();

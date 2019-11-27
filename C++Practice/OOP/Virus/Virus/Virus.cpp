@@ -1,3 +1,4 @@
+#pragma warning(disable : 4996)
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -7,12 +8,18 @@ using namespace std;
 
 Virus::Virus()
 {
+//
 }
 
-Virus::Virus(char* m_dna, int m_resistance)
+Virus::Virus(char* dna, int resistance)
 {
-	this->m_dna = m_dna;
-	this->m_resistance = m_resistance;
+	this->m_dna = dna;
+	this->m_resistance = resistance;
+}
+
+Virus::~Virus()
+{
+//
 }
 
 Virus::Virus(const Virus& virus)
@@ -21,9 +28,9 @@ Virus::Virus(const Virus& virus)
 	this->m_resistance = virus.m_resistance;
 }
 
-void Virus::SetM_dna(char* m_dna)
+void Virus::SetM_dna(char* dna)
 {
-	this->m_dna = m_dna;
+	this->m_dna = dna;
 }
 
 char* Virus::GetM_dna()
@@ -57,5 +64,5 @@ void Virus::LoadADNInformation()
 
 void Virus::ReduceResistance(int medicine_resistance)
 {
-	m_resistance = m_resistance - medicine_resistance;
+	this->m_resistance = this->m_resistance - medicine_resistance;
 }

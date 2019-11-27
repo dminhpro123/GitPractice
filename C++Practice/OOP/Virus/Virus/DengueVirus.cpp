@@ -1,3 +1,4 @@
+#pragma warning(disable : 4996)
 #include "DengueVirus.h"
 #include <iostream>
 #include <string>
@@ -15,9 +16,14 @@ DengueVirus::~DengueVirus()
 	this->DoDie();
 }
 
-void DengueVirus::SetM_protein(char* m_protein)
+DengueVirus::DengueVirus(const DengueVirus& dengueVirus) : Virus(dengueVirus)
 {
-	strcpy(this->m_protein,m_protein);
+	this->m_protein = dengueVirus.m_protein;
+}
+
+void DengueVirus::SetM_protein(char* protein)
+{
+	strcpy(this->m_protein,protein);
 }
 
 char* DengueVirus::GetM_protein()
@@ -31,6 +37,7 @@ void DengueVirus::DoBorn()
 	string* proteinArray = new string[3]{ "NS3", "NS5", "E" };
 	int index = rand() % 3;
 	string protein = proteinArray[index];
+	this->m_protein = new char(4);
 	strcpy(this->m_protein, protein.c_str());
 }
 
@@ -40,9 +47,6 @@ list<Virus*> DengueVirus::DoClone()
 	for (int i = 0; i < 2; i++)
 	{
 		DengueVirus* dengueVirus = new DengueVirus();
-		dengueVirus->SetM_protein(this->GetM_protein());
-		dengueVirus->SetM_dna(this->GetM_dna());
-		dengueVirus->SetM_resistance(this->GetM_resistance());
 		listDengueVirus.push_back(dengueVirus);
 	}
 	return listDengueVirus;
@@ -50,7 +54,7 @@ list<Virus*> DengueVirus::DoClone()
 
 void DengueVirus::DoDie()
 {
-//	release all virus data
+	cout << "Dengue died\n";
 }
 
 void DengueVirus::InitResistance()
@@ -58,12 +62,12 @@ void DengueVirus::InitResistance()
 	int resistance;
 	// random value for color NS3
 	string protein = this->m_protein;
-	if (protein == "NS3")
+	if (protein.compare("NS3"))
 	{
 		resistance = rand() % 10 + 1;
 	}
 	// random value for color NS5;
-	else if (protein == "NS5")
+	else if (protein.compare("NS5"))
 	{
 		resistance = rand() % 10 + 11;
 	}

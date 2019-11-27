@@ -106,10 +106,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\GameLoft\Visual Leak Detector_portable_vs15;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>vld.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\GameLoft\Visual Leak Detector_portable_vs15\lib\Win64</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -151,9 +154,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DengueVirus.cpp" />
+    <ClCompile Include="FluVirus.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Patient.cpp" />
     <ClCompile Include="Virus.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DengueVirus.h" />
+    <ClInclude Include="FluVirus.h" />
+    <ClInclude Include="Patient.h" />
     <ClInclude Include="Virus.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

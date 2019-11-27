@@ -6,6 +6,7 @@
 
 using namespace std;
 
+
 FluVirus::FluVirus()
 {
 	this->DoBorn();
@@ -17,9 +18,14 @@ FluVirus::~FluVirus()
 	this->DoDie();
 }
 
-void FluVirus::SetM_color(int m_color)
+FluVirus::FluVirus(const FluVirus& fluVirus) : Virus(fluVirus)
 {
-	this->m_color = m_color;
+	this->m_color = fluVirus.m_color;
+}
+
+void FluVirus::SetM_color(int color)
+{
+	this->m_color = color;
 }
 
 int FluVirus::GetM_color()
@@ -39,9 +45,6 @@ list<Virus *> FluVirus::DoClone()
 {
 	list<Virus*> listFluVirus;
 	FluVirus* fluVirus = new FluVirus();
-	fluVirus->SetM_color(this->GetM_color());
-	fluVirus->SetM_dna(this->GetM_dna());
-	fluVirus->SetM_resistance(this->GetM_resistance());
 	listFluVirus.push_back(fluVirus);
 	return listFluVirus;
 }
@@ -49,6 +52,7 @@ list<Virus *> FluVirus::DoClone()
 void FluVirus::DoDie()
 {
 //	release all virus data
+	cout << "flu virus die lol :)\n";
 }
 
 void FluVirus::InitResistance()
